@@ -38,5 +38,9 @@ def gallery_form():
 def success():
     return render_template("success.html")
 
+@app.route("/api")
+def home():
+    print("This is a Chnange in file")
+
 if __name__ == "__main__":
     app.run(debug=True)
