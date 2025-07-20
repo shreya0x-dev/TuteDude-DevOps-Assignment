@@ -3,7 +3,6 @@ from pymongo import MongoClient, errors
 
 app = Flask(__name__)
 
-# ✅ Local MongoDB (works with Compass)
 client = MongoClient("mongodb://localhost:27017/")
 db = client["DevOps"]
 collection = db["ArtGallery"]
@@ -38,9 +37,7 @@ def gallery_form():
 def success():
     return render_template("success.html")
 
-@app.route("/api")
-def home():
-    print("This is a Chnange in file")
+
 
 if __name__ == "__main__":
     app.run(debug=True)
