@@ -1,4 +1,4 @@
-from flask import Flask, request, jsonify
+from flask import Flask, request, jsonify, render_template
 from flask_pymongo import PyMongo
 from flask_cors import CORS
 
@@ -6,6 +6,10 @@ app = Flask(__name__)
 CORS(app)
 app.config["MONGO_URI"] = "mongodb://localhost:27017/todoDB"
 mongo = PyMongo(app)
+
+@app.route('/')
+def home():
+    return render_template('todo.html')
 
 @app.route('/submittodoitem', methods=['POST'])
 def submittodoitem():
@@ -16,7 +20,9 @@ def submittodoitem():
     })
     return jsonify({"message": "Item stored!"})
 
-app.run()
+if __name__ == '__main__':
+    app.run(debug=True)
+
 
 
 
